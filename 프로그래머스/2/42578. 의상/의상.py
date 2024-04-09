@@ -1,10 +1,6 @@
 from collections import Counter
+from functools import reduce
 
 def solution(clothes):
-    answer = 1
     count = Counter([kind for name, kind in clothes])
-    
-    for v in count.values():
-        answer *= v+1
-    
-    return answer -1
+    return reduce(lambda x, y: x*(y+1), count.values(), 1) - 1

@@ -1,14 +1,10 @@
+from collections import Counter
+
 def solution(clothes):
     answer = 1
-    count = {}
+    count = Counter([kind for name, kind in clothes])
     
-    for val, kind in clothes:
-        if kind not in count:
-            count[kind] = 1
-        else:
-            count[kind] += 1
-         
-    for k,v in count.items():
+    for v in count.values():
         answer *= v+1
     
-    return answer - 1
+    return answer -1

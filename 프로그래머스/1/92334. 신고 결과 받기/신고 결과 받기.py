@@ -1,9 +1,8 @@
 def solution(id_list, report, k):
     answer = {id:0 for id in id_list}
     report_list = {id:[] for id in id_list}
-    report_set = set(report)
  
-    for r in report_set:
+    for r in set(report):
         reporter, reportee = r.split(' ')
         report_list[reportee].append(reporter)
         

@@ -1,6 +1,15 @@
 import sys
-from itertools import combinations_with_replacement
-n, m = map(int, sys.stdin.readline().split())
 
-for p in combinations_with_replacement(list(range(1, n+1)), m):
-    print(*p)
+n, m = map(int, sys.stdin.readline().split())
+arr = []
+
+def backtrack(start):
+    if len(arr) == m:
+        print(*arr)
+        return
+    for i in range(start, n + 1):
+        arr.append(i)
+        backtrack(i)
+        arr.pop()
+
+backtrack(1)

@@ -1,4 +1,5 @@
-import sys, copy
+import sys
+
 n, m = map(int, sys.stdin.readline().split())
 office = []
 cctv = []
@@ -34,21 +35,18 @@ def update_watched_area(office, cx, cy, angle):
 def backtrack(depth, office):
     global blind_spot
     
-    # cctv 다 검토하면
     if depth == len(cctv):
-         #사각지대 최소 크기 업데이트
         cnt = 0
         for row in office:
             cnt += row.count(0)
         blind_spot = min(blind_spot, cnt)
         return
     
-    # cctv 유형에 따른 시야각 검토
     type, cx, cy = cctv[depth]
     for angle in cctv_type[type]:
-        temp = copy.deepcopy(office)
-        update_watched_area(temp, cx, cy, angle)
-        backtrack(depth+1, temp)
+        temp_office = [row[:] for row in office]
+        update_watched_area(temp_office, cx, cy, angle)
+        backtrack(depth+1, temp_office)
         
 blind_spot = 64
 backtrack(0, office)

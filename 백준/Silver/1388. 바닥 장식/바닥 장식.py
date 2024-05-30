@@ -7,16 +7,14 @@ for _ in range(n):
 def dfs(deco, i, j):
     floor[i][j] = 0
     if deco == '-':
-        for dy in [-1, 1]:
-            y = j + dy
-            if (0 < y < m) and floor[i][y] == '-':
-                dfs('-', i, y)
+        y = j + 1
+        if (0 < y < m) and floor[i][y] == '-':
+            dfs('-', i, y)
     if deco == '|':
-        for dx in [-1, 1]:
-            x = i + dx
-            if 0 < x < n and floor[x][j] == '|':
-                dfs('|', x, j)
-    
+        x = i + 1
+        if 0 < x < n and floor[x][j] == '|':
+            dfs('|', x, j)
+
 cnt = 0
 for i in range(n):
     for j in range(m):

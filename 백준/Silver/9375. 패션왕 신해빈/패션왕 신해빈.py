@@ -1,15 +1,15 @@
 import sys
-tc = int(sys.stdin.readline().strip())
+tc = int(sys.stdin.readline().rstrip())
 for _ in range(tc):
-    n = int(sys.stdin.readline().strip())
-    counter = {}
-    answer = 1
+    n = int(sys.stdin.readline().rstrip())
+    kinds = {}
     for _ in range(n):
-        item, kind = sys.stdin.readline().split()
-        if kind not in counter:
-            counter[kind] = 1
+        name, kind = sys.stdin.readline().split()
+        if kind in kinds:
+            kinds[kind] += 1
         else:
-            counter[kind] += 1
-    for cnt in counter.values():
-        answer *= cnt + 1
-    print(answer-1)
+            kinds[kind] = 1
+    ans = 1
+    for v in kinds.values():
+        ans *= v+1
+    print(ans-1)

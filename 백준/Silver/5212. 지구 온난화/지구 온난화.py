@@ -9,14 +9,12 @@ for _ in range(r):
 minx, miny, maxx, maxy = r-1, c-1, 0, 0
 for i, row in enumerate(map1):
     for j, col in enumerate(row):
-        xy = [(1,0), (0,1), (-1,0), (0,-1)]
         cnt = 0
         if col == 'X':
-            for x, y in xy:
-                dx = i + x
-                dy = j + y
-                if 0<= dx <r and 0<= dy <c:
-                    if map1[dx][dy]=='.':
+            for dx, dy in [(1,0), (0,1), (-1,0), (0,-1)]:
+                nx, ny = i+dx, j+dy
+                if 0<= nx <r and 0<= ny <c:
+                    if map1[nx][ny] == '.':
                         cnt += 1
                 else:
                     cnt += 1

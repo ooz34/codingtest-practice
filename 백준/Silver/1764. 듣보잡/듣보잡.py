@@ -1,11 +1,11 @@
 import sys
 n, m = map(int, sys.stdin.readline().split())
-d_set = set()
-b_set = set()
-for i in range(n):
-    d_set.add(sys.stdin.readline().strip())
-for i in range(m):
-    b_set.add(sys.stdin.readline().strip())
-it = sorted(d_set & b_set)
-print(len(it))
-print(*it, sep='\n')
+d = set()
+for _ in range(n):
+    d.add(sys.stdin.readline().rstrip())
+b = set()
+for _ in range(m):
+    b.add(sys.stdin.readline().rstrip())
+db = sorted(d & b)
+print(len(db))
+print(*db, sep='\n')
